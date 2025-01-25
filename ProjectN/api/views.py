@@ -29,15 +29,19 @@ class NotificationViewSet(viewsets.ModelViewSet):
         if notification.sent:
             return Response({'status': 'Notification already sent.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Here, implement your logic to send the notification.
-        # For example, use an email library to send an email.
-        # Assume the sending operation sets `notification.sent` to True and saves the date_sent.
-
-        notification.sent = True
-        notification.date_sent = timezone.now()
-        notification.save()
-
-        return Response({'status': 'Notification sent successfully.'}, status=status.HTTP_200_OK)
+        # Sending the email
+        try:
+            send_email(
+                subject="Notification from Our Service",
+                message=notification.message,
+                recipient_list=[notification.recipient.email]  # Assuming your Notification model has a 'recipient' field with an 'email' attribute
+            )
+            notification.sent = True
+            notification.date_sent = timezone.now()
+            notification.save()
+            return Response({'status': 'Notification sent successfully.'}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'status': 'Failed to send notification: {}'.format(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class NotificationSettingViewSet(viewsets.ModelViewSet):
