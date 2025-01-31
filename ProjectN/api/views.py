@@ -34,7 +34,7 @@ class NotificationViewSet(viewsets.ModelViewSet):
             send_email(
                 subject="Notification from Our Service",
                 message=notification.message,
-                recipient_list=[notification.recipient.email]  # Assuming your Notification model has a 'recipient' field with an 'email' attribute
+                recipient_list=[notification.recipient.email]
             )
             notification.sent = True
             notification.date_sent = timezone.now()
@@ -48,7 +48,7 @@ class NotificationSettingViewSet(viewsets.ModelViewSet):
     queryset = NotificationSetting.objects.all()
     serializer_class = NotificationSettingSerializer
 
-# notifications/views.py
+
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
@@ -58,5 +58,5 @@ class NotificationViewSet(viewsets.ModelViewSet):
         send_email(
             'New Notification',
             instance.message,
-            [instance.recipient.email]  # Assuming the recipient has an email field
+            [instance.recipient.email]
         )

@@ -7,4 +7,4 @@ router.register(r'notification_types', NotificationTypeViewSet)
 router.register(r'notifications', NotificationViewSet)
 router.register(r'notification_settings', NotificationSettingViewSet)
 
-urlpatterns = router.urls  # This automatically includes all CRUD routes with trailing slashes
+urlpatterns = router.urls

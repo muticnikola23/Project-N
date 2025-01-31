@@ -4,7 +4,7 @@ def send_email(subject, message, recipient_list):
     send_mail(
         subject,
         message,
-        'from@example.com',  # Email defined in EMAIL_HOST_USER
+        'from@example.com',
         recipient_list,
         fail_silently=False,
     )
