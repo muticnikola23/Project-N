@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "api",
     "rest_framework",
+    "django_extensions",
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -134,4 +136,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'muticnikola23@gmail.com'
-EMAIL_HOST_PASSWORD = 'GTX65i767j112233@'
+EMAIL_HOST_PASSWORD = 'plfp jqzt pund zlim'
+
+TWILIO_AUTH_TOKEN = "c99177ef7caade9dc7cfe721f66b1e61"
+TWILIO_ACCOUNT_SID = 'AC41b3f8fdc468812a6d376309975a8e35'
+TWILIO_PHONE_NUMBER = '+16187496429'
